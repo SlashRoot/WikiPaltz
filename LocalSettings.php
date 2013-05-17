@@ -25,18 +25,19 @@ $wgSitename      = "WikiPaltz";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## http://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath       = "/~wikip";
+$wgScriptPath = "";
+$wgArticlePath = "/wiki/$1";
 $wgScriptExtension  = ".php";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer           = "http://174.132.121.226";
+$wgServer           = "http://wikipaltz.org";
 
 ## The relative URL path to the skins directory
 $wgStylePath        = "$wgScriptPath/skins";
 
 ## The relative URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo             = "$wgStylePath/common/images/wiki.png";
+$wgLogo             = "/WikiPaltzLogo.JPG";
 
 ## UPO means: this is also a user preference option
 
@@ -115,10 +116,20 @@ $wgDiff3 = "/usr/bin/diff3";
 $wgResourceLoaderMaxQueryLength = -1;
 
 
+# So that we get the proper IP address from varnish
+$wgUseSquid = true;
+$wgSquidServers = array('127.0.0.1');
+
+
+################
+## EXTENSIONS ##
+################
+
+
 # Enabled Extensions. Most extensions are enabled by including the base extension file here
 # but check specific extension documentation for more details
 # The following extensions were automatically enabled:
-require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
+#require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
 require_once( "$IP/extensions/Gadgets/Gadgets.php" );
 require_once( "$IP/extensions/Nuke/Nuke.php" );
 require_once( "$IP/extensions/ParserFunctions/ParserFunctions.php" );
@@ -130,3 +141,42 @@ require_once( "$IP/extensions/WikiEditor/WikiEditor.php" );
 # End of automatically generated settings.
 # Add more configuration options below.
 
+
+$wgLocaltimezone = "US/Eastern";
+$oldtz = getenv("TZ");
+putenv("TZ=$wgLocaltimezone");
+
+# Variables
+require_once( "$IP/extensions/Variables/Variables.php" );
+
+require_once( "$IP/extensions/TimeAgo/TimeAgo.php" );
+
+# slashRoot's Python Parser
+require_once( "$IP/extensions/PythonParser/PythonParser.php" );
+
+
+
+# Semantic Mediawiki
+require_once( "$IP/extensions/DataValues/DataValues.php" );
+require_once( "$IP/extensions/Validator/Validator.php" );
+include_once( "$IP/extensions/SemanticMediaWiki/SemanticMediaWiki.php" );
+enableSemantics('wikipaltz.org');
+include_once("$IP/extensions/SemanticForms/SemanticForms.php");
+
+
+#### SPAM AND VANDALISM DEFENSE ####
+
+# Temporary anti-spam measures
+# Force people to register before they are allowed to edit
+# $wgGroupPermissions['*']['edit'] = false; 
+# $wgShowIPinHeader = false;
+
+# And stop people from making accounts.  :-(
+# $wgGroupPermissions['*']['createaccount'] = false;
+
+# Longer-term anti-spam measures
+require_once( "$IP/extensions/AntiSpoof/AntiSpoof.php" );
+require_once( "$IP/extensions/AbuseFilter/AbuseFilter.php" );
+
+require_once( "$IP/extensions/SpamBlacklist/SpamBlacklist.php" );
+require_once("$IP/extensions/Asirra/Asirra.php");

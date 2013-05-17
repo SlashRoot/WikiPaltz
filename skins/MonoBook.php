@@ -80,6 +80,14 @@ class MonoBookTemplate extends BaseTemplate {
 
 		$this->html( 'headelement' );
 ?>
+
+<script src="/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+  jQuery("abbr.timeago").timeago();
+});
+</script>
+
 <div id="CrazyNotice" style="background-color: white; font-size: 20px; height: 25px; position: absolute; text-align: center; width: 100%;">
     <a href="http://174.132.121.226/~wikip/index.php?title=WikiPaltz:Why_does_WikiPaltz_look_all_messed_up%3F">
         Why does WikiPaltz look all messed up?
