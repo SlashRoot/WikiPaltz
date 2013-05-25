@@ -51,7 +51,12 @@ $wgEnotifUserTalk      = true; # UPO
 $wgEnotifWatchlist     = true; # UPO
 $wgEmailAuthentication = true;
 
+include 'ProfilerSettings.php';
+
+
 include 'DatabaseSecrets.php'; # We don't want the database creds and secret key in the repo.
+
+
 
 # MySQL specific settings
 $wgDBprefix         = "";
@@ -63,7 +68,7 @@ $wgDBTableOptions   = "ENGINE=MyISAM, DEFAULT CHARSET=binary";
 $wgDBmysql5 = false;
 
 ## Shared memory settings
-$wgMainCacheType    = CACHE_NONE;
+$wgMainCacheType = CACHE_ACCEL;
 $wgMemCachedServers = array();
 
 ## To enable image uploads, make sure the 'images' directory
@@ -89,14 +94,15 @@ $wgShellLocale = "en_US.utf8";
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publically accessible from the web.
-#$wgCacheDirectory = "$IP/cache";
+$wgCacheDirectory = "$IP/cache";
+$wgEnableSidebarCache = true;
 
 # Site language code, should be one of the list in ./languages/Names.php
 $wgLanguageCode = "en";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, ie 'standard', 'nostalgia', 'cologneblue', 'monobook', 'vector':
-$wgDefaultSkin = "monobook";
+$wgDefaultSkin = "wikipaltz";
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
@@ -121,6 +127,7 @@ $wgUseSquid = true;
 $wgSquidServers = array('127.0.0.1');
 
 
+
 ################
 ## EXTENSIONS ##
 ################
@@ -141,20 +148,16 @@ require_once( "$IP/extensions/WikiEditor/WikiEditor.php" );
 # End of automatically generated settings.
 # Add more configuration options below.
 
-
 $wgLocaltimezone = "US/Eastern";
 $oldtz = getenv("TZ");
 putenv("TZ=$wgLocaltimezone");
 
 # Variables
 require_once( "$IP/extensions/Variables/Variables.php" );
-
 require_once( "$IP/extensions/TimeAgo/TimeAgo.php" );
 
 # slashRoot's Python Parser
 require_once( "$IP/extensions/PythonParser/PythonParser.php" );
-
-
 
 # Semantic Mediawiki
 require_once( "$IP/extensions/DataValues/DataValues.php" );
@@ -180,3 +183,6 @@ require_once( "$IP/extensions/AbuseFilter/AbuseFilter.php" );
 
 require_once( "$IP/extensions/SpamBlacklist/SpamBlacklist.php" );
 require_once("$IP/extensions/Asirra/Asirra.php");
+
+
+# $wgShowExceptionDetails = true;
