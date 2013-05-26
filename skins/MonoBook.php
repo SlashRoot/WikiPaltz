@@ -79,6 +79,8 @@ class MonoBookTemplate extends BaseTemplate {
 		wfSuppressWarnings();
 
 		$this->html( 'headelement' );
+
+include "GoogleAnalyticsInclude.php";
 ?>
 
 <script src="/jquery.timeago.js" type="text/javascript"></script>

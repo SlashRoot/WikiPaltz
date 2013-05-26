@@ -1,23 +1,5 @@
 <?php
 /**
- * Vector - Modern version of MonoBook with fresh look and many usability
- * improvements.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
- *
  * @todo document
  * @file
  * @ingroup Skins
@@ -35,8 +17,8 @@ class SkinWikiPaltz extends SkinTemplate {
 
 	protected static $bodyClasses = array( 'vector-animateLayout' );
 
-	var $skinname = 'vector', $stylename = 'vector',
-		$template = 'VectorTemplate', $useHeadElement = true;
+	var $skinname = 'wikipaltz', $stylename = 'wikipaltz',
+		$template = 'WikiPaltzTemplate', $useHeadElement = true;
 
 	/**
 	 * Initializes output page and sets up skin-specific parameters
@@ -57,7 +39,12 @@ class SkinWikiPaltz extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
-		$out->addModuleScripts( 'skins.vector' );
+		$out->addModuleScripts( 'skins.wikipaltz' );
+		$out->addStyle('common/commonElements.css', 'screen');
+		$out->addStyle('common/commonContent.css', 'screen');
+		$out->addStyle('common/commonInterface.css', 'screen');
+		$out->addStyle('wikipaltz/screen.css', 'screen');
+                $out->addScriptFile('/skins/wikipaltz/vector.js');
 	}
 
 	/**
@@ -67,7 +54,7 @@ class SkinWikiPaltz extends SkinTemplate {
 	 */
 	function setupSkinUserCss( OutputPage $out ){
 		parent::setupSkinUserCss( $out );
-		$out->addModuleStyles( 'skins.vector' );
+		$out->addModuleStyles( 'skins.wikipaltz' );
 	}
 
 	/**
@@ -89,7 +76,7 @@ class SkinWikiPaltz extends SkinTemplate {
  * QuickTemplate class for Vector skin
  * @ingroup Skins
  */
-class VectorTemplate extends BaseTemplate {
+class WikiPaltzTemplate extends BaseTemplate {
 
 	/* Functions */
 
