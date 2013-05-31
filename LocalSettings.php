@@ -199,4 +199,8 @@ require_once( "$IP/extensions/SpamBlacklist/SpamBlacklist.php" );
 require_once("$IP/extensions/Asirra/Asirra.php");
 
 
+$wgCaptchaTriggers['create']		= false; // Check on page creation.
+$wgCaptchaTriggers['sendemail']     = false; // Special:Emailuser
+
+
 $wgShowExceptionDetails = true;
