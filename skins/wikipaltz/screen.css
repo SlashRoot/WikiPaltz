@@ -31,15 +31,14 @@ color: white;
 }
 /* Content */
 div#content {
-	margin-left: 10em;
-	padding: 1em;
-	/* @embed */
-	/*background-image: url(images/border.png);*/
-	background-position: top left;
-	background-repeat: repeat-y;
-	background-color: #043C6B;
-	color: white;
-	direction: ltr;
+    background-color:#043C6B;
+    border-left: 2px ridge #66A1D2;
+    color: white;
+    direction: ltr;
+    margin-left: 10em;
+    padding: 1em;
+    position: relative;
+    z-index: 50;
 }
 /* Head */
 #mw-page-base {
@@ -105,11 +104,12 @@ div.emptyPortlet {
 #left-navigation {
 	position: absolute;
 	left: 10em;
-	top: 2.5em;
+	top: 39px;
+        z-index: 50;
 }
 #right-navigation {
 	float: right;
-	margin-top: 2.5em;
+	margin-top: 39px;
 }
 /* Navigation Labels */
 div.vectorTabs h5,
@@ -127,7 +127,6 @@ div.vectorTabs {
 	/*background-image: url(images/tab-break.png);*/
 	background-position: bottom left;
 	background-repeat: no-repeat;
-	padding-left: 1px;
 }
 /* @noflip */
 div.vectorTabs ul {
@@ -547,6 +546,12 @@ div#footer #footer-places li {
 	margin-right: 1em;
 	line-height: 2em;
 }
+
+@font-face {
+font-family: "veteran-typewriter";
+src: url(veteran-typewriter.ttf) format("truetype");
+}
+
 /* Logo */
 #p-logo {
 	position: absolute;
@@ -555,13 +560,26 @@ div#footer #footer-places li {
 	width: 10em;
 }
 #p-logo a {
-	display: block;
-	width: 10em;
-	height: 130px;
-        margin-top:10px;
-	background-repeat: no-repeat;
-	background-position: center center;
-	text-decoration: none;
+    background-repeat: no-repeat;
+    display: block;
+    height: 202px;
+    left: -20px;
+    position: absolute;
+    text-decoration: none;
+    top: -15px;z-index: 50;
+    width: 200px;
+    z-index: 25;
+}
+
+#logo-text {
+    color: #FFFFFF;
+    font-family: times new roman;
+    font-size: 40px;
+    margin-bottom: 11px;
+    margin-top: 22px;
+    position: relative;
+    text-shadow: 2px 1px 2px black;
+    z-index: 50;
 }
 
 /*
@@ -673,9 +691,7 @@ div#footer #footer-places li {
 /**
  * The following code is slightly modified from monobook
  */
-div#content {
-	line-height: 1.5em;
-}
+
 #bodyContent {
 	font-size: 0.8em;
 }
@@ -1006,4 +1022,13 @@ li.gallerybox div.thumb div {
 
 #toc a, .toc a, .mw-warning a {
     color: #043C6B;
+}
+
+div.thumbinner {
+    background-color: #A67500;
+    border: 1px solid #66A1D2;
+    font-size: 94%;
+    overflow: hidden;
+    padding: 3px !important;
+    text-align: center;
 }
